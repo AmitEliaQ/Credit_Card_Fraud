@@ -1,7 +1,17 @@
 # Credit Card Fraud Detection
 
 Logistic Regression fraud model + interactive Streamlit dashboard built on `credit_card_fraud_10k.xlsx`
-(10,000 transactions, 1.51% fraud).
+(10,000 transactions, 1.51% fraud). The dataset is included in the repo, so a fresh clone runs as is.
+
+![Fraud dashboard](docs/screenshots/dashboard.png)
+
+## Results
+Held-out test set of 2,000 transactions (30 fraud), ROC-AUC 0.995, PR-AUC 0.782:
+
+| Threshold | Precision | Recall | F1 | Fraud caught | False alerts |
+|---|---|---|---|---|---|
+| Default (0.50) | 0.833 | 0.500 | 0.625 | 15 of 30 | 3 |
+| Tuned (0.124) | 0.452 | 0.933 | 0.609 | 28 of 30 | 34 |
 
 ## Setup
 ```
@@ -25,4 +35,4 @@ pytest -q                              # tests
 - **Metrics**: ROC-AUC, PR-AUC, Precision, Recall, F1. Accuracy is misleading at 1.5% prevalence; Recall is
   the share of fraud caught, Precision the share of alerts that are real. The threshold trades them off.
 - **Layout**: `src/` (config, loader, preprocessing, train, evaluate, predict), `app/streamlit_app.py`,
-  `models/` (generated), `tests/`.
+  `models/` (trained model, committed; `python -m src.train` regenerates it), `tests/`.

@@ -3,5 +3,3 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .DS_Store
-# raw dataset is not published; place credit_card_fraud_10k.xlsx in the project root to train
-*.xlsx
